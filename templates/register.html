@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Registration {% endblock %}
+{% block bodycolor %}
+    <body style="background-color:#c4dfe6"> {% endblock %}
+{% block body %}
+
+    <div class="containerLog" style="margin-top: 80px">
+        <form id="form_id" role="form" method="post" name="myform" onsubmit="return validate()">
+            {% csrf_token %}
+            <label>User name </label>
+            <input type="text" placeholder="Type your user name" name="username" id="name"/>
+
+            <label>First Name</label>
+            <input class="input" placeholder="Type your first name" type="text" name="first_name">
+            <label>Last Name</label>
+            <input  type="text" class="input" placeholder="Type your last name"  name="last_name">
+            <label>Email address </label>
+            <input type="text" placeholder="Type your email address" name="email" id="email"/>
+            <label>Password </label>
+            <input type="password" placeholder="Type your password" name="password" id="reg_password"/>
+            <label> Confirm password </label>
+            <input type="password" placeholder="Type your password" name="password" id="conf_password"/>
+            <button type="submit" style="background-color: #68829e;color:#ffffff" id="login" >
+                Register
+            </button>
+
+        </form>
+
+
+        <a href="{% url 'mysite:home' %}">
+            <button type="button" class="cancel">Cancel</button>
+        </a>
+
+        <hr class="featurette-divider">
+        <footer>
+            <a href="https://www.google.nl/search?q=travel+planner&client=firefox-b&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjZwbH3n8vQAhVJ2ywKHfA3DmIQ_AUICCgB&biw=1408&bih=640#tbm=isch&q=login+image&imgdii=NBuVcKQHcmJ2DM%3A%3BNBuVcKQHcmJ2DM%3A%3BaJxuVV8MoUX5gM%3A&imgrc=NBuVcKQHcmJ2DM%3A ">Picture
+                Source</a>
+        </footer>
+        <img class="image" src="{% static 'img/r.jpg' %}" style="padding-left: 360px" alt="Generic placeholder image">
+
+    </div>
+{% endblock %}
+
+{% block exactjs %} src="{% static 'js/register.js' %}"{% endblock %}

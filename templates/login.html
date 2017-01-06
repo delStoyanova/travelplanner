@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Login {% endblock %}
+{% block bodycolor %}
+    <body style="background-color:#c4dfe6"> {% endblock %}
+{% block body %}
+
+
+
+    <div class="containerLog" style="margin-top: 80px">
+        <form id="form_id" role="form" method="post" name="myform" onsubmit="return validate()">
+            {% csrf_token %}
+            <label>User name </label>
+            <input class="input" type="text" placeholder="Type your user name" name="username1" id="name"/>
+            <label>Password </label>
+            <input type="password" placeholder="Type your password" name="password1" id="password"/>
+
+
+            <button type="submit" style="background-color: #68829e;color:#ffffff" id="login" onclick="validate()"> Login
+            </button>
+        </form>
+        {% if errors %}
+            <p><strong>{{ errors }}</strong></p>
+        {% endif %}
+
+
+        <a href="{% url 'mysite:home' %}">
+            <button type="button" class="cancel">Cancel</button>
+        </a>
+        <span class="psw" id="psw"> <a href="#">Forgot password?</a></span>
+
+        <hr class="featurette-divider">
+
+        <footer>
+            <a href="https://www.google.nl/search?q=travel+planner&client=firefox-b&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjZwbH3n8vQAhVJ2ywKHfA3DmIQ_AUICCgB&biw=1408&bih=640#tbm=isch&q=login+image&imgdii=NBuVcKQHcmJ2DM%3A%3BNBuVcKQHcmJ2DM%3A%3BaJxuVV8MoUX5gM%3A&imgrc=NBuVcKQHcmJ2DM%3A ">Picture
+                Source</a>
+        </footer>
+        <img class="image" src="{% static 'img/l.jpg' %}" style="padding-left: 360px" alt="Generic placeholder image">
+
+    </div>
+
+
+{% endblock %}
+
+
+{% block exactjs %} src="{% static 'js/login.js' %}"{% endblock %}

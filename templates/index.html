@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load staticfiles %}
+{% block title %} Home page {% endblock %}
+{% block body %}
+
+    <!-- Carousel================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="first-slide" src="{% static 'img/e.jpg' %}" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption">
+
+                        <h1 style="background-color: #b3d4fc">You have an upcoming trip and you need advices</h1>
+                        <p style="background-color: #b3d4fc">Explore what travel planner can offer you</p>
+                        <p><a class="btn btn-lg btn-primary" href="{% url 'mysite:advices' %}" role="button">Learn
+                            more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item ">
+                <img class="second-slide" src="{% static 'img/a.jpg' %}" alt="Second slide">
+
+                <div class="container">
+                    <div class="carousel-caption">
+
+                        <h1 style="background-color: #b3d4fc">Or you are still searching for your dream trip</h1>
+                        <p style="background-color: #b3d4fc"> Read about the most visiting places on Earth</p>
+                        <p><a class="btn btn-lg btn-primary" href="{% url 'mysite:attractive.places' %}" role="button">More
+                            details</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="third-slide" src="{% static 'img/f.jpg' %}" alt="Third slide">
+                <div class="container">
+                    <div class="carousel-caption">
+
+                        <h1 style="background-color: #b3d4fc">Start your learning with Travel planner.</h1>
+                        <p style="background-color: #b3d4fc">Make a profile and built your trip</p>
+                        <p><a class="btn btn-lg btn-primary" href="{% url 'mysite:register' %}" role="button">Sign
+                            up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span aria-hidden="false">
+            <img style="padding-top:250px " src="{% static 'img/arrow2.png' %}">
+          </span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span aria-hidden="true">
+             <img style="padding-top:250px " src="{% static 'img/arrow.png' %}">
+        </span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div><!-- /.carousel -->
+
+
+<!-- END OF CAROUSEL -->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="img-circle" src="{% static 'img/b.jpg' %}" alt="Generic placeholder image" width="140"
+                     height="140">
+                <h2>Share your experience</h2>
+                <p> Write your story so that other people can learn from it </p>
+                <p><a class="btn btn-default" href="{% url 'mysite:share' %}" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-circle" src="{% static 'img/c.jpg' %}" alt="Generic placeholder image" width="140"
+                     height="140">
+                <h2>Pack your luggage wisely</h2>
+                <p> Learn about items people often forget</p>
+                <p><a class="btn btn-default" href="{% url 'mysite:pack' %}" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-circle" src="{% static 'img/d.jpg' %}" alt="Generic placeholder image" width="140"
+                     height="140">
+                <h2>Good travel guides</h2>
+                <p> Pick up the travel guide for you.</p>
+                <p><a class="btn btn-default" href="{% url 'mysite:guides' %}" role="button">View details &raquo;</a>
+                </p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+        <footer><a style="color:#000000" href="http://shushi168.com/travel-wallpaper.html ">First Picture
+            Source</a></footer>
+        <footer><a style="color:#000000"
+                   href="https://www.shutterstock.com/search/travel+destinations  ">Second Picture
+            Source</a></footer>
+        <footer><a style="color:#000000" href="http://www.trendsandlife.com/category/travel/">Third Picture
+            Source</a></footer>
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="pull-right"><a href="#">Back to top</a></p>
+        </footer>
+
+    </div><!-- /.container -->
+{% endblock %}
+
+

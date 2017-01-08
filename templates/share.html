@@ -21,17 +21,21 @@
                 with adding new posts click here</a>
             </div>
         {% else %}
+         {% if user.is_authenticated %}
         <label>Your story: </label>
         <form role="form" method="post" name="myform" onsubmit="return validate()">
             {% csrf_token %}
             {{ form.as_p }}
+
             <textarea name="text" id="share" placeholder="Start writing here..."></textarea>
             <button type="submit" class="btn btn-default btn-lg"><i
                     class="fa fa-circle-o-notch fa-spin"></i> Post
             </button>
         </form>
+             {% else %}
+           <label style="margin-bottom: 30px">You have to be logged in in order to post a story. </label>
 
-
+             {% endif %}
 
 
         {% for item in items %}

@@ -175,6 +175,7 @@ span.psw {
     /* Taking the difference out of the padding */
 }
 
+
 .badgebox:checked + .badge
 {
     /* Move the check mark back when checked */

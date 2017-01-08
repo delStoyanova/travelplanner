@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_wkh*wdc#h!-73b_7sh-t2sxv#rci)12=jhb!ahg*fo3#8t$l#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['travelplanner.pythonanywhere.com']
 

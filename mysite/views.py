@@ -18,7 +18,8 @@ def profile(request):
         if user_form.is_valid():
             user_form.save()
             user_form = UpdateUserForm(instance=request.user)
-            message = {'message': 'Your profile was successfully updated!', 'user_form': user_form, }
+            prof = ProfileUser.objects.all()
+            message = {'message': 'Your profile was successfully updated!', 'user_form': user_form,'prof':prof }
             return render(request, 'profile.html', message)
         else:
             message = {'message': 'Error'}
@@ -27,12 +28,33 @@ def profile(request):
         prof = ProfileUser.objects.all()
         user_form = UpdateUserForm(request.POST, instance=request.user)
         return render(request, 'profile.html', {
-            "prof": prof,'user_form': user_form, })
+            "prof": prof, 'user_form': user_form, })
     else:
         # image = prof.avatar
         user_form = UpdateUserForm(instance=request.user)
     return render(request, 'profile.html', {
         'user_form': user_form, })
+
+
+##upload profile photo
+def photo(request):
+    # Handle file upload
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            img = ProfileUser.objects.filter(author=request.user)
+            img.delete()
+            newdoc = ProfileUser(avatar=request.FILES['docfile'])
+            newdoc.author = request.user
+            newdoc.save()
+            prof = ProfileUser.objects.all()
+            user_form = UpdateUserForm(request.POST, instance=request.user)
+            return render(request, 'profile.html', {'message': "Photo uploaded", 'prof': prof,'user_form':user_form})
+    else:
+        form = DocumentForm()  # A empty, unbound form
+
+    # Render list page with the documents and the form
+    return render(request, 'profile.html', {'form': form})
 
 
 ##add item to ToDolist for the specific logged in user
@@ -191,9 +213,9 @@ class PostFormView(View):
 
     # show the items already saved on the server
     def get(self, request):
-        items = Post.objects.all().order_by('published_date')
+        items = Post.objects.all().order_by('-published_date')
         prof = ProfileUser.objects.all()
-        return render(request, self.template_name, {'items': items,'prof': prof})
+        return render(request, self.template_name, {'items': items, 'prof': prof})
 
     def post(self, request):
         # when user press the add button
@@ -205,9 +227,9 @@ class PostFormView(View):
             item.person = current_user
             item.text = exp
             item.save()
-            items = Post.objects.all().order_by('published_date')
+            items = Post.objects.all().order_by('-published_date')
             prof = ProfileUser.objects.all()
-            return render(request, self.template_name, {'prof': prof})
+            return render(request, self.template_name, {'prof': prof, 'items': items})
         else:
             message = {'message': 'Error'}
             return render(request, self.template_name, message)
@@ -304,20 +326,3 @@ def advices(request):
 def detail(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     return render(request, 'index.html', {"user": user})
-
-
-def photo(request):
-    # Handle file upload
-    if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-            newdoc = ProfileUser(avatar=request.FILES['docfile'])
-            newdoc.author = request.user
-            newdoc.save()
-
-            return render(request, 'profile.html', {'message': "Photo uploaded"})
-    else:
-        form = DocumentForm()  # A empty, unbound form
-
-    # Render list page with the documents and the form
-    return render(request, 'profile.html', {'form': form})

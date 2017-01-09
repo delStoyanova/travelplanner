@@ -28,9 +28,9 @@ urlpatterns = [
                   url(r'^', include('api.urls')),
                   # url(r'^', include('mysite.urls')),
 
-              ] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns = format_suffix_patterns(urlpatterns) cannot load Viewset
 # not for production
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    #urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

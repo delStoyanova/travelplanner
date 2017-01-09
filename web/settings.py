@@ -129,8 +129,8 @@ STATICFILES_DIRS = [
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home2/media/media.lawrence.com/media/" /home/holidayplanner/travelplanner/media/avatars
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+#PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+MEDIA_ROOT ="/home/holidayplanner/travelplanner/media/avatars/"
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
